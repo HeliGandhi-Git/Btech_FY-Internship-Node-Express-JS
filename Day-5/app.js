@@ -22,17 +22,18 @@ app.get('/add-product', (req, res) => {
         product_details: "Best Phone",
         product_price: 85000
     }
-
-    //Assigned Data to Model
-    var mydata = Products(userData)
-
-    //Save in DB
-    mydata.save()
-        .then(() => {
-            res.send("Record Added")
-        })
-        .catch(() => res.send("Error Record Add"))
 })
+
+//Assigned Data to Model
+var mydata = Products(userData)
+
+//Save in DB
+mydata.save()
+    .then(() => {
+        res.send("Record Added")
+    })
+    .catch(() => res.send("Error Record Add"))
+
 
 app.get('/display-product', (req, res) => {
     //Fetch data from connection 
@@ -53,9 +54,9 @@ app.post('/add-product-api', (req, res) => {
 
 //Display data API
 app.get('/display-product-api', (req, res) => {
- Products.find()
- .then(pdata => res.json(pdata))
- .catch(err => console.error(err));
+    Products.find()
+        .then(pdata => res.json(pdata))
+        .catch(err => console.error(err));
 });
 
 app.get('/', (req, res) => {
